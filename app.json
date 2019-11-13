@@ -1,0 +1,14 @@
+{
+  "pages": [
+	"pages/login/login"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#576b95",
+    "navigationBarTitleText": "商城191112",
+    "navigationBarTextStyle": "white",
+	"enablePullDownRefresh":false
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,12 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+	<text>欢迎登录商城</text>
+	<input type="number" class="phone_number" bindblur="getPhone" placeholder="请输入手机号码" />
+	<view class="code">
+		<input class="code_number" placeholder="请输入验证码" bindblur="getCode"/>
+		<button class="btn_code">获取验证码</button>
+	</view>
+	<view>
+		<button bindtap="login" class="btn_login">商城登录</button>
+	</view>
+</view>
