@@ -31,7 +31,7 @@ input{
 .btn_code{
 	background-color: #576b95;
 	color: #fff;
-	width: 280rpx!important;
+	width: 320rpx!important;
 	margin-left: 10rpx!important;
 }
 .btn_login{

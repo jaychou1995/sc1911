@@ -3,52 +3,99 @@
 const app = getApp()
 
 Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+  data:{
+	  navList:[],
+	  productList:[
+	        {
+	          "id" : 1,
+	          "name":"华为Mate 30",
+	          "src" : "/images/temp/cate1.jpg",
+	          "price" : 4099  
+	        },
+	        {
+	          "id": 2,
+	          "name": "华为Mate 30",
+	          "src": "/images/temp/cate2.jpg",
+	          "price": 4099  
+	        },
+	        {
+	          "id": 3,
+	          "name": "华为Mate 30",
+	          "src": "/images/temp/cate3.jpg",
+	          "price": 4099  
+	        },
+	        {
+	          "id": 4,
+	          "name": "华为Mate 30",
+	          "src": "/images/temp/cate4.jpg",
+	          "price": 4099  
+	        },
+	        {
+	          "id": 5,
+	          "name": "华为Mate 30",
+	          "src": "/images/temp/cate5.jpg",
+	          "price": 4099  
+	        },
+	        {
+	          "id": 6,
+	          "name": "华为Mate 30",
+	          "src": "/images/temp/cate6.jpg",
+	          "price": 4099  
+	        },
+	        {
+	          "id": 7,
+	          "name": "华为Mate 30",
+	          "src": "/images/temp/cate7.jpg",
+	          "price": 4099
+	        },
+	        {
+	          "id": 8,
+	          "name": "华为Mate 30",
+	          "src": "/images/temp/cate8.jpg",
+	          "price": 4099
+	        },
+	        {
+	          "id": 9,
+	          "name": "华为Mate 30",
+	          "src": "/images/temp/cate9.jpg",
+	          "price": 4099
+	        },
+	        {
+	          "id": 10,
+	          "name": "华为Mate 30",
+	          "src": "/images/temp/cate10.jpg",
+	          "price": 4099,
+	          checked:true
+	        },]
+
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  getNavList(){
+	  let that = this
+	  wx.request({
+		  url:'http://www.hengyishun.cn/login/navList',
+		  success(res) {
+			let navList = res.data
+			that.setData({
+				navList:navList
+			})
+		  }
+	  })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+  getProductList(){
+  	  let that = this
+  	  wx.request({
+  		  url:'http://www.hengyishun.cn/login/getProductList',
+  		  success(res) {
+  		  	console.log(res);
+  			let ProductList = res.data
+  			that.setData({
+  				ProductList:ProductList
+  			})
+  		  }
+  	  })
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  onLoad(){
+	  this.getNavList()
+	  // this.getProductList()
   }
 })

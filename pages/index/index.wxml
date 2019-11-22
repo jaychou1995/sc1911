@@ -1,13 +1,45 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+	<swiper autoplay circular indicator-dots>
+		<swiper-item>
+			<image src="../../images/temp/banner1.jpg" mode="widthFix"></image>
+		</swiper-item>
+		<swiper-item>
+			<image src="../../images/temp/banner2.jpg" mode="widthFix"></image>
+		</swiper-item>
+		<swiper-item>
+			<image src="../../images/temp/banner3.jpg" mode="widthFix"></image>
+		</swiper-item>
+		<swiper-item>
+			<image src="../../images/temp/banner4.jpg" mode="widthFix"></image>
+		</swiper-item>
+	</swiper>
+	
+	<view class="nav">
+		<block wx:for="{{navList}}" wx:key="{{index}}">
+			<view class="menu">
+				<text>{{item.title}}</text>
+				<image src="{{item.src}}"></image>
+			</view>
+		</block>
+	</view>
+	
+	<!-- 产品列表 -->
+	<test class="hot">热卖产品</test>
+	<view class="warp">
+		<block wx:for="{{productList}}" wx:key="{{index}}">
+			<view class="product">
+				<navigator url="/pages/detail/detail?id={{item.id}}">
+					<image src="../../images/temp/cate1.jpg" mode="widthFix"></image>
+					<view class="info">
+						<text class="name">{{item.name}}</text>
+						<text class="price">{{item.price}}</text>
+					</view>
+				</navigator>
+
+			</view>
+		</block>
+
+	</view>
+	
 </view>

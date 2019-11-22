@@ -32,15 +32,14 @@ Page({
 				code: this.data.code
 			}),
 			success(res){
-				success(res){
-				  if(res.data == "true"){
-				    wx.showToast({
-				      title: '登陆成功',
-				    });
-				    wx.switchTab({
-				      url:'/pages/index/index'
-				    })
-				  }
+				console.log(res);
+				if(res.data == "true"){
+					wx.showToast({
+					  title: '登陆成功',
+					});
+					wx.redirectTo({
+					  url:'/pages/index/index'
+					})
 				}
 			}
 		})
